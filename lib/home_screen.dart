@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_sample/app_router.dart';
+import 'package:go_router_sample/list_screen.dart';
 
 final homeNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -10,7 +12,7 @@ class HomeBranch extends StatefulShellBranchData {
 class HomeRoute extends GoRouteData {
   const HomeRoute();
 
-  static const path = '';
+  static const path = '/';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -23,8 +25,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('home'),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('home'),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () => const ListRoute().push(context),
+          child: const Text('to list'),
+        )
+      ],
     );
   }
 }

@@ -10,7 +10,7 @@ class SettingsBranch extends StatefulShellBranchData {
 class SettingsRoute extends GoRouteData {
   const SettingsRoute();
 
-  static const path = 'settings';
+  static const path = '/settings';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

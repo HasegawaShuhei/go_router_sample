@@ -9,6 +9,7 @@ class App extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     routes: $appRoutes,
+    navigatorKey: rootNavigatorKey,
     initialLocation: '/',
   );
 

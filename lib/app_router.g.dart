@@ -19,6 +19,13 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/',
               factory: $HomeRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'list',
+                  parentNavigatorKey: ListRoute.$parentNavigatorKey,
+                  factory: $ListRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -43,6 +50,23 @@ extension $HomeRouteExtension on HomeRoute {
 
   String get location => GoRouteData.$location(
         '/',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ListRouteExtension on ListRoute {
+  static ListRoute _fromState(GoRouterState state) => const ListRoute();
+
+  String get location => GoRouteData.$location(
+        '/list',
       );
 
   void go(BuildContext context) => context.go(location);
