@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router_sample/ui/providers/auth.dart';
+import 'package:go_router_sample/providers/auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'refresh_listenable.g.dart';
