@@ -112,7 +112,6 @@ extension $ListRouteExtension on ListRoute {
 extension $DetailRouteExtension on DetailRoute {
   static DetailRoute _fromState(GoRouterState state) => DetailRoute(
         title: state.uri.queryParameters['title']!,
-        $extra: state.extra as Item,
       );
 
   String get location => GoRouteData.$location(
@@ -122,16 +121,14 @@ extension $DetailRouteExtension on DetailRoute {
         },
       );
 
-  void go(BuildContext context) => context.go(location, extra: $extra);
+  void go(BuildContext context) => context.go(location);
 
-  Future<T?> push<T>(BuildContext context) =>
-      context.push<T>(location, extra: $extra);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location, extra: $extra);
+      context.pushReplacement(location);
 
-  void replace(BuildContext context) =>
-      context.replace(location, extra: $extra);
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SettingsRouteExtension on SettingsRoute {
