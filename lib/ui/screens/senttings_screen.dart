@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_sample/ui/providers/auth.dart';
 
 final settingsNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,13 +20,21 @@ class SettingsRoute extends GoRouteData {
   }
 }
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('settings'),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('settings'),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () => ref.read(authProvider.notifier).logout(),
+          child: const Text('logout'),
+        )
+      ],
     );
   }
 }
