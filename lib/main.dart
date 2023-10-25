@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_sample/app_router.dart';
+import 'package:go_router_sample/ui/router/app_router.dart';
 
 void main() => runApp(App());
 

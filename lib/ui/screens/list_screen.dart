@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_sample/app_router.dart';
-import 'package:go_router_sample/detail_screen.dart';
+import 'package:go_router_sample/ui/router/app_router.dart';
+import 'package:go_router_sample/ui/screens/detail_screen.dart';
 
 class ListRoute extends GoRouteData {
   const ListRoute();

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_sample/detail_screen.dart';
-import 'package:go_router_sample/home_screen.dart';
-import 'package:go_router_sample/list_screen.dart';
-import 'package:go_router_sample/root_screen.dart';
-import 'package:go_router_sample/senttings_screen.dart';
+import 'package:go_router_sample/ui/screens/detail_screen.dart';
+import 'package:go_router_sample/ui/screens/home_screen.dart';
+import 'package:go_router_sample/ui/screens/list_screen.dart';
+import 'package:go_router_sample/ui/screens/root_screen.dart';
+import 'package:go_router_sample/ui/screens/senttings_screen.dart';
 
 part 'app_router.g.dart';
 
