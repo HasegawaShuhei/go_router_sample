@@ -24,6 +24,13 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
                   path: 'list',
                   parentNavigatorKey: ListRoute.$parentNavigatorKey,
                   factory: $ListRouteExtension._fromState,
+                  routes: [
+                    GoRouteData.$route(
+                      path: 'detail',
+                      parentNavigatorKey: DetailRoute.$parentNavigatorKey,
+                      factory: $DetailRouteExtension._fromState,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -77,6 +84,31 @@ extension $ListRouteExtension on ListRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DetailRouteExtension on DetailRoute {
+  static DetailRoute _fromState(GoRouterState state) => DetailRoute(
+        title: state.uri.queryParameters['title']!,
+        $extra: state.extra as Item,
+      );
+
+  String get location => GoRouteData.$location(
+        '/list/detail',
+        queryParams: {
+          'title': title,
+        },
+      );
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }
 
 extension $SettingsRouteExtension on SettingsRoute {

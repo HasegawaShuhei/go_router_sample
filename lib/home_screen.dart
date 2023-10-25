@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         const Text('home'),
         const SizedBox(height: 16),
         ElevatedButton(
-          onPressed: () => const ListRoute().push(context),
+          onPressed: () => const ListRoute().go(context),
           child: const Text('to list'),
         )
       ],

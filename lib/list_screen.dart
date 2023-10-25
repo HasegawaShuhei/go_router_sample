@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_sample/app_router.dart';
+import 'package:go_router_sample/detail_screen.dart';
 
 class ListRoute extends GoRouteData {
   const ListRoute();
@@ -21,7 +22,8 @@ class ListRoute extends GoRouteData {
 class ListScreen extends StatelessWidget {
   const ListScreen({super.key});
 
-  List<Item> get items => List.generate(10, (index) => Item('title:$index'));
+  List<Item> get items =>
+      List.generate(10, (index) => Item('title:${index + 1}'));
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,9 @@ class ListScreen extends StatelessWidget {
         itemBuilder: (_, index) {
           final item = items[index];
           return ListTile(
+            // 引数を与えての遷移 [https://docs.page/csells/go_router/typed-routing#mixed-parameters]
+            onTap: () =>
+                DetailRoute(title: item.title, $extra: item).go(context),
             title: Text(item.title),
           );
         },
