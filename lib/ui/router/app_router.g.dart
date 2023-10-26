@@ -60,6 +60,15 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
           ],
         ),
         StatefulShellBranchData.$branch(
+          navigatorKey: ProductBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/product',
+              factory: $ProductRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
           navigatorKey: SettingsBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
@@ -131,6 +140,35 @@ extension $DetailRouteExtension on DetailRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $ProductRouteExtension on ProductRoute {
+  static ProductRoute _fromState(GoRouterState state) => ProductRoute(
+        device: _$convertMapValue(
+            'device', state.uri.queryParameters, _$DeviceEnumMap._$fromName),
+      );
+
+  String get location => GoRouteData.$location(
+        '/product',
+        queryParams: {
+          if (device != null) 'device': _$DeviceEnumMap[device!],
+        },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+const _$DeviceEnumMap = {
+  Device.phone: 'phone',
+  Device.tablet: 'tablet',
+  Device.laptop: 'laptop',
+};
+
 extension $SettingsRouteExtension on SettingsRoute {
   static SettingsRoute _fromState(GoRouterState state) => const SettingsRoute();
 
@@ -146,4 +184,18 @@ extension $SettingsRouteExtension on SettingsRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T _$fromName(String value) =>
+      entries.singleWhere((element) => element.value == value).key;
 }

@@ -32,6 +32,7 @@ class RootScreen extends StatelessWidget {
 
 enum NavBarItem {
   home,
+  product,
   settings,
 }
 
@@ -40,11 +41,13 @@ extension NavBarItemExt on NavBarItem {
 
   IconData get iconData => switch (this) {
         NavBarItem.home => Icons.home,
+        NavBarItem.product => Icons.devices,
         NavBarItem.settings => Icons.settings,
       };
 
   String get label => switch (this) {
         NavBarItem.home => 'Home',
+        NavBarItem.product => 'Product',
         NavBarItem.settings => 'Settings',
       };
 }

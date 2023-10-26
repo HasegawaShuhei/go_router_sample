@@ -4,6 +4,7 @@ import 'package:go_router_sample/ui/screens/detail_screen.dart';
 import 'package:go_router_sample/ui/screens/home_screen.dart';
 import 'package:go_router_sample/ui/screens/list_screen.dart';
 import 'package:go_router_sample/ui/screens/login_screen.dart';
+import 'package:go_router_sample/ui/screens/product_screen.dart';
 import 'package:go_router_sample/ui/screens/root_screen.dart';
 import 'package:go_router_sample/ui/screens/senttings_screen.dart';
 
@@ -45,6 +46,13 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
             //   path: DetailRoute.path,
             // ),
           ],
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch<ProductBranch>(
+      routes: <TypedRoute<RouteData>>[
+        TypedGoRoute<ProductRoute>(
+          path: ProductRoute.path,
         ),
       ],
     ),
