@@ -49,7 +49,7 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
                   factory: $ListRouteExtension._fromState,
                   routes: [
                     GoRouteData.$route(
-                      path: 'detail',
+                      path: ':id',
                       parentNavigatorKey: DetailRoute.$parentNavigatorKey,
                       factory: $DetailRouteExtension._fromState,
                     ),
@@ -120,14 +120,11 @@ extension $ListRouteExtension on ListRoute {
 
 extension $DetailRouteExtension on DetailRoute {
   static DetailRoute _fromState(GoRouterState state) => DetailRoute(
-        title: state.uri.queryParameters['title']!,
+        id: state.pathParameters['id']!,
       );
 
   String get location => GoRouteData.$location(
-        '/list/detail',
-        queryParams: {
-          'title': title,
-        },
+        '/list/${Uri.encodeComponent(id)}',
       );
 
   void go(BuildContext context) => context.go(location);

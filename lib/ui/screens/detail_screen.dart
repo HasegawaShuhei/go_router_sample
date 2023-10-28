@@ -4,22 +4,22 @@ import 'package:go_router_sample/ui/router/app_router.dart';
 
 class DetailRoute extends GoRouteData {
   const DetailRoute({
-    required this.title,
+    required this.id,
     // required this.$extra,
   });
 
-  static const path = 'detail';
+  static const path = ':id';
 
   static final $parentNavigatorKey = rootNavigatorKey;
 
-  final String title;
+  final String id;
   // オブジェクトを受け取る場合は$extraを使う
   // final Item $extra;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return DetailScreen(
-      title: title,
+      id: id,
       // item: $extra,
     );
   }
@@ -28,17 +28,17 @@ class DetailRoute extends GoRouteData {
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
     super.key,
-    required this.title,
+    required this.id,
   });
 
-  final String title;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text(title),
+        child: Text(id),
       ),
     );
   }

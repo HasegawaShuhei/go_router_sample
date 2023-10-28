@@ -35,7 +35,7 @@ class ListScreen extends StatelessWidget {
           final item = items[index];
           return ListTile(
             // 引数を与えての遷移 [https://docs.page/csells/go_router/typed-routing#mixed-parameters]
-            onTap: () => DetailRoute(title: item.title).go(context),
+            onTap: () => DetailRoute(id: index.toString()).go(context),
             title: Text(item.title),
           );
         },
