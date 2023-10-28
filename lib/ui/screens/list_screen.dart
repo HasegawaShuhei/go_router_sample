@@ -6,8 +6,7 @@ import 'package:go_router_sample/ui/screens/detail_screen.dart';
 class ListRoute extends GoRouteData {
   const ListRoute();
 
-  // MEMO: 遷移時にBNBを非表示にする際は今回の場合pathに「/」不要、
-  // parentNavigatorKeyにrootNavigatorKeyを指定
+  // parentNavigatorKeyにrootNavigatorKeyを指定してBNBを非表示
   // 遷移時もBNBを表示したい場合はそのroute用のNavigatorKeyを指定する
   static const path = 'list';
 
